@@ -4,12 +4,7 @@ pipeline {
     stage('Execute Terraform') {
       steps {
         echo 'creating vpc'
-        sh '''(cd /var/lib/jenkins/terraformPractice/; sudo git pull)
-cp -f /var/lib/jenkins/variables/variables.tf variables.tf
-cp -f /var/lib/jenkins/terraformPractice/aws-vpc.tf aws-vpc.tf
-terraform init
-terraform plan
-terraform apply'''
+       
       }
     }
 
@@ -25,8 +20,7 @@ terraform apply'''
 stage('Destroy') {
       steps {
         echo 'Destroying'
-        sh 'terraform destroy -force || true'
-      }
+      
   }
  }
 }
